@@ -14,7 +14,7 @@ App = {
       web3 = new Web3(web3.currentProvider);
     } else {
       // Specify default instance if no web3 instance provided
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
       web3 = new Web3(App.web3Provider);
     }
     return App.initContract();
@@ -79,7 +79,11 @@ App = {
   }).then(function(hasVoted) {
     // Do not allow a user to vote
     if(hasVoted) {
-      $('form').hide();
+    //  $('form').hide();
+    $("#formVote").hide();
+    }
+    else {
+      $("#formVote").show();
     }
     loader.hide();
     content.show();
